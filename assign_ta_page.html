@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;1,200&display=swap');
+
+        .container {
+            padding: 0%;
+            max-width: 100%;
+        }
+
+        .item {
+            display: flex;
+            margin: 0;
+            width: 100%;
+        }
+        .item1 {
+            width: 10%;
+            /* background-color: rosybrown; */
+        }
+        .item2 {
+            width: 80%;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 30px;
+            font-weight: 400;
+            /* background-color: green; */
+            text-align: center;
+
+        }
+        .item3 {
+            width: 10%;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 25px;
+            font-weight: 400;
+            text-align: right;
+        }
+
+        .item3 img {
+            float: right;
+        }
+
+        h2 {
+        font-family: 'Source Sans Pro', sans-serif;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item">
+
+            <div class="item1">
+                <img src="./iitgn_logo.png" alt="" width="35%" height="90%">
+            </div>
+
+            <div class="item2">
+                TA Assignment Page
+            </div>
+
+            <div class="item3">
+                Profile &nbsp; 
+                <img src="./profile icon.png" alt="" width="40%" height="75%">
+            </div>
+
+        </div>
+
+        <br><br>
+
+        <!-- <br>
+
+        <h2>Course Name</h2>
+
+        Number of TAs to be assigned = <button type="button" class="btn btn-primary">4</button>
+        <br>
+        <br>
+
+        <input type="button" value="Add TA" class="ck"/>
+        <br/>
+        <div class="divtext"></div> -->
+        <div class="row">
+            <div class="col-lg-5 col-md-8 mx-auto shadow border bg-white p-4 rounded">
+                <h2 class="text-center fw-bold mb-3">Enter Details</h2>
+                <form name="google-sheet">
+                    <div id="form_alerts"></div>
+                    <div class="form-group mb-3">
+                        <label for="course_name" class="form-label">Course Name</label>
+                        <input type="text" id="course_name" name="course_name" class="form-control" placeholder="Enter Course name" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="course_code" class="form-label">Course Code</label>
+                        <input type="text" id="course_code" name="course_code" class="form-control" placeholder="Enter Course code" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="name" class="form-label">TA Name</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Enter TA's name" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="email" class="form-label">TA's Email ID</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Enter TA's email address" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="message" class="form-control" placeholder="Enter your message" rows="5" required></textarea>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary me-2" type="submit">Send details</button>
+                        <button class="btn btn-danger" type="reset">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwtsST8Q4VLkXthzVvcu7Ue9vHRyv129NjZYqgq-kJbeSEx8qEHjSozfDt01cf9msc12Q/exec'
+        const form = document.forms['google-sheet']
+        
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => $("#form_alerts").html("<div class='alert alert-success'>Contact message sent successfully.</div>"))
+            .catch(error => $("#form_alerts").html("<div class='alert alert-danger'>Contact message not sent.</div>"))
+        })
+    </script>
+
+    <!-- <script type ="text/javascript" src="./jquery.js"></script>
+    <script>
+        var i = 1;
+        $(function(){
+            $('.ck').click(function(){
+                $('.divtext').append("<input type='text' class='cl" + i + "' value='TA Name - "+i+"'/><br/>");
+                i = i + 1;
+            })
+        })
+    </script> -->
+</body>
+</html>
