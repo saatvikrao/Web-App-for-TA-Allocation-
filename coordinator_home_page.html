@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;1,200&display=swap');
+        
+        .item {
+            display: flex;
+        }
+        .item1 {
+            width: 10%;
+            /* background-color: rosybrown; */
+        }
+        .item2 {
+            width: 80%;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 30px;
+            font-weight: 400;
+            /* background-color: green; */
+            text-align: center;
+
+        }
+        .item3 {
+            width: 10%;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 25px;
+            font-weight: 400;
+            text-align: right;
+        }
+
+        .item3 img {
+            float: right;
+        }
+
+        * {
+        box-sizing: border-box;
+        }
+
+        #myInput {
+        background-image: url('/css/searchicon.png');
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+        font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        #myTable {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ddd;
+        font-size: 18px;
+        background-color: #D2E7EC;
+        font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        #myTable th, #myTable td {
+        text-align: left;
+        padding: 12px;
+        font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        #myTable tr {
+        border-bottom: 1px solid #ddd;
+        font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        #myTable tr.header, #myTable tr:hover {
+        background-color: #f1f1f1;
+        font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        h2 {
+        font-family: 'Source Sans Pro', sans-serif;
+    }
+    </style>
+
+ 
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="item">
+
+            <div class="item1">
+                <img src="./iitgn_logo.png" alt="" width="35%" height="90%">
+            </div>
+
+            <div class="item2">
+                Discpline Coordinator Page
+            </div>
+
+            <div class="item3">
+                Profile &nbsp; 
+                <img src="./profile icon.png" alt="" width="40%" height="75%">
+            </div>
+
+        </div>
+
+        <h2>COURSE LIST</h2>
+
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for course code.." title="Type in a name">
+
+        <table id="myTable">
+        <tr class="header">
+            <th style = "width: 20%; ">Course Code</th>
+            <th style="width:40%;">Course name</th>
+            <th style="width:40%;">Course Instructor</th>
+        </tr>
+        <tr>
+            <td>MA 202</td>
+            <td>Mathematics 4</td>
+            <td>Prof. Uddipta Ghosh</td>
+        </tr>
+        <tr>
+            <td>ES 215</td>
+            <td>Computer Architecture</td>
+            <td>Prof. Sameer Kulkarni</td>
+        </tr>
+        <tr>
+            <td>HS 151</td>
+            <td>Economics</td>
+            <td>Prof. Deepak Singhania</td>
+        </tr>
+        <tr>
+            <td>CS 302</td>
+            
+            <td>Theory of Computing</td>
+            <td>Prof. Bireswar Das</td>
+        </tr>
+        <tr>
+            <td>CS 301</td>
+
+            <td>Operating system</td>
+            <td>Prof. ABhishek Bichawat</td>
+        </tr>
+        <tr>
+            <td>ES 311</td>
+
+            <td>Probability and Random Processes</td>
+            <td>Prof. Shanmuganathan Raman</td>
+        </tr>
+        <tr>
+            <td>EE 332</td>
+            
+            <td>Power systems</td>
+            <td>Prof. Naran Pindoriya</td>
+        </tr>
+
+        </table>
+    </div>
+
+    <script>
+        function myFunction() {
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }       
+          }
+        }
+        </script>
+</body>
+</html>
